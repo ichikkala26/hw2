@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 /**
  * Implements User functionality and information storage
  *  You should not need to derive anything from User at this time

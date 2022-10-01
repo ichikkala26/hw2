@@ -36,7 +36,10 @@ Movie::Movie(const std::string category, const std::string name, double price, i
       myFinalString.append(" Rating: ");
       myFinalString.append(rating_);
       myFinalString.append("\n");
-      myFinalString.append(to_string(price_));
+      std::stringstream a;
+      a << price_;
+      a.precision(2);
+      myFinalString.append(a.str());
       myFinalString.append(" ");
       myFinalString.append(to_string(qty_));
       myFinalString.append(" left.");
@@ -45,6 +48,6 @@ Movie::Movie(const std::string category, const std::string name, double price, i
   }
   void Movie::dump(std::ostream& os) const
   {
-    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << 
-    genre_ << "\n" << rating_ << endl;
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" 
+    << genre_ << "\n" << rating_ << endl;
   }

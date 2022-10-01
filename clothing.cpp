@@ -36,7 +36,10 @@ Clothing::Clothing(const std::string category, const std::string name, double pr
       myFinalString.append(" Brand: ");
       myFinalString.append(brand_);
       myFinalString.append("\n");
-      myFinalString.append(to_string(price_));
+      std::stringstream a;
+      a << price_;
+      a.precision(2);
+      myFinalString.append(a.str());
       myFinalString.append(" ");
       myFinalString.append(to_string(qty_));
       myFinalString.append(" left.");
@@ -45,6 +48,6 @@ Clothing::Clothing(const std::string category, const std::string name, double pr
   }
   void Clothing::dump(std::ostream& os) const
   {
-    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << 
-    size_ << "\n" << brand_ << endl;
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" 
+    << size_ << "\n" << brand_ << endl;
   }

@@ -27,11 +27,7 @@ Book::Book(const std::string category, const std::string name, double price, int
     bookKeywords.insert(ISBN_);
     return bookKeywords;
   }
-  /*
-  <name>
-  Author: <author> ISBN: <isbn>
-  <price> <quantity> left.
-*/
+
   std::string Book::displayString() const
   {
       std::string myFinalString = name_;
@@ -41,7 +37,10 @@ Book::Book(const std::string category, const std::string name, double price, int
       myFinalString.append(" ISBN: ");
       myFinalString.append(ISBN_);
       myFinalString.append("\n");
-      myFinalString.append(to_string(price_));
+      std::stringstream a;
+      a << price_;
+      a.precision(2);
+      myFinalString.append(a.str());
       myFinalString.append(" ");
       myFinalString.append(to_string(qty_));
       myFinalString.append(" left.");

@@ -4,6 +4,8 @@
 #include <iostream>
 #include "product.h"
 
+using namespace std;
+
 class ProductParser
 {
 public:
