@@ -6,6 +6,12 @@ Data Abstraction & Problem Solving with C++
 978-013292372-9
 Carrano and Henry
 book
+Data Structures
+39.99
+15
+978-013213372-9
+Song
+book
 Great Men and Women of Troy
 19.50
 5
@@ -28,4 +34,5 @@ PG
 aturing 100.00 0
 johnvn 50.00 1
 adal 120.00 1
+andy 10.00 0
 </users>
