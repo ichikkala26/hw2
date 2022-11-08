@@ -16,6 +16,11 @@ Movie::Movie(const std::string category, const std::string name, double price, i
 
 }
 
+Movie::~Movie()
+{
+  
+}
+
 
 
   std::set<std::string> Movie::keywords() const
@@ -37,8 +42,8 @@ Movie::Movie(const std::string category, const std::string name, double price, i
       myFinalString.append(rating_);
       myFinalString.append("\n");
       std::stringstream a;
-      a << price_;
       a.precision(2);
+      a << price_;
       myFinalString.append(a.str());
       myFinalString.append(" ");
       myFinalString.append(to_string(qty_));

@@ -17,6 +17,10 @@ Book::Book(const std::string category, const std::string name, double price, int
 }
 
 
+Book::~Book()
+{
+  
+}
 
   std::set<std::string> Book::keywords() const
   {
@@ -42,7 +46,7 @@ Book::Book(const std::string category, const std::string name, double price, int
       a.precision(2);
       myFinalString.append(a.str());
       myFinalString.append(" ");
-      myFinalString.append(to_string(qty_));
+      myFinalString.append(std::to_string(qty_));
       myFinalString.append(" left.");
 
       return myFinalString;
@@ -50,5 +54,5 @@ Book::Book(const std::string category, const std::string name, double price, int
   void Book::dump(std::ostream& os) const
   {
     os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << 
-    ISBN_ << "\n" << author_ << endl;
+    "\n" << ISBN_ << "\n" << author_ << endl;
   }

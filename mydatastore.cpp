@@ -96,6 +96,8 @@
       for(prodDBIterator=productDatabase.begin(); prodDBIterator!=productDatabase.end(); ++prodDBIterator)
       {
           (*prodDBIterator)->dump(ofile);
+          Product* copyProduct = *prodDBIterator;
+          delete copyProduct;
       }
       ofile << "</products>\n";
       ofile << "<users>\n";
@@ -103,6 +105,8 @@
       for(userDBIterator=userDatabase.begin(); userDBIterator!=userDatabase.end(); ++userDBIterator)
       {
           (*userDBIterator)->dump(ofile);
+          User* copyUser = *userDBIterator;
+          delete copyUser;
       }
       ofile << "</users>\n";
     }
@@ -133,7 +137,7 @@
       }
       else
       {
-        cout << "Invalid error" << endl;
+        cout << "Invalid request" << endl;
       }
 
     }
@@ -149,15 +153,19 @@
         for(it2=userCart.begin(); it2!=userCart.end(); ++it2)
         {
           Product* p = *it2;
-          std::string productName = p->getName();
+          /*std::string productName = p->getName();
           productName = convToLower(productName);
           cout<<productCounter<<": "<<productName<<endl;
+          productCounter++;*/
+          cout<<"Item "<<productCounter<<endl;
+          string productPrint = p->displayString();
+          cout << productPrint <<"\n"<<endl;
           productCounter++;
         }
       }
       else
       {
-        cout<<"Invalid request. User not found"<<endl;
+        cout<<"Invalid username"<<endl;
         return;
       }
       
@@ -175,6 +183,7 @@
       if(it != userCartMap.end())
       {
         std::vector<Product*> userCart = it->second;
+        std::vector<Product*> tempCart;
         for(unsigned int i = 0; i < userCart.size(); i++)
         {
           int currQuantity = userCart[i]->getQty();
@@ -187,19 +196,19 @@
           {
             userCart[i]->subtractQty(1);
             currUser->deductAmount(currProdPrice);
-            userCart.erase(userCart.begin() + i);
+            //userCart.erase(userCart.begin() + i);
           }
-          else
+          else if(currQuantity==0 || userAvailableCredit< currProdPrice)
           {
-            continue;
+            tempCart.push_back(userCart[i]);
           }
         }
 
-        it->second = userCart;
+        it->second = tempCart;
       }
       else
       {
-        cout<<"Invalid request. User not found"<<endl;
+        cout<<"Invalid username"<<endl;
         return;
       }
     }

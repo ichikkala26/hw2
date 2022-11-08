@@ -16,6 +16,11 @@ Clothing::Clothing(const std::string category, const std::string name, double pr
 
 }
 
+Clothing::~Clothing()
+{
+  
+}
+
 
 
   std::set<std::string> Clothing::keywords() const
